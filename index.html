@@ -296,7 +296,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;python&quot;,&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -306,9 +306,8 @@
     <div class="toc-wrapper">
       <img src="images/logo-7de86fbc.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">shell</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -323,15 +322,34 @@
           </li>
           <li>
             <a href="#reframe-personalization-engine" class="toc-h1 toc-link" data-title="Reframe Personalization Engine">Reframe Personalization Engine</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-parameters" class="toc-h2 toc-link" data-title="API Parameters">API Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#pricing" class="toc-h2 toc-link" data-title="Pricing">Pricing</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#reframe-coursedynamics" class="toc-h1 toc-link" data-title="Reframe CourseDynamics">Reframe CourseDynamics</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-parameters-2" class="toc-h2 toc-link" data-title="API Parameters">API Parameters</a>
+                  </li>
+                  <li>
+                    <a href="#pricing-2" class="toc-h2 toc-link" data-title="Pricing">Pricing</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#reframe-visionscript" class="toc-h1 toc-link" data-title="Reframe VisionScript">Reframe VisionScript</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#reference" class="toc-h2 toc-link" data-title="Reference">Reference</a>
+                  </li>
+                  <li>
+                    <a href="#modules" class="toc-h2 toc-link" data-title="Modules">Modules</a>
                   </li>
               </ul>
           </li>
@@ -345,7 +363,7 @@
                     <a href="#reframe-slideshow" class="toc-h2 toc-link" data-title="Reframe Slideshow">Reframe Slideshow</a>
                   </li>
                   <li>
-                    <a href="#reframe-ai-likeness" class="toc-h2 toc-link" data-title="Reframe AI Likeness">Reframe AI Likeness</a>
+                    <a href="#reframe-ai-avatar" class="toc-h2 toc-link" data-title="Reframe AI Avatar">Reframe AI Avatar</a>
                   </li>
                   <li>
                     <a href="#reframe-voice-synthetics" class="toc-h2 toc-link" data-title="Reframe Voice Synthetics">Reframe Voice Synthetics</a>
@@ -373,29 +391,334 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Reframe API documentation. Reframe provides a suite of core APIs that allow developers to tap into Reframe&#39;s powerful services to create engaging and highly personalized content.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>Request an API key here: https://www.reframeapi.com/about</p>
+<p>All requests to Reframe APIs need to include an API key in the <code>X-API-Key</code> header.</p>
+
+<p>Request an API key here: <a href="https://www.reframeapi.com/about">https://www.reframeapi.com/about</a></p>
 <h1 id='reframe-personalization-engine'>Reframe Personalization Engine</h1>
-<p><Placeholder for API specification></p>
+<p>Reframe Personalization Engine empowers you to unlock vast potential from your customer data, irrespective of the source system. Reframe Personalization Engine is designed to seamlessly ingest data, and in return, yield richly detailed, engaging, and highly personalized video output.</p>
+<h2 id='api-parameters'>API Parameters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s1">'X-API-Key: &lt;your-api-key&gt;'</span> <span class="se">\</span>
+  <span class="nt">--json</span> @my-template.rvs <span class="se">\</span>
+  <span class="s1">'https://rpe.endpoint.reframeapi.com/latest?first_name=Bob&amp;favourite_drink=latte'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">reframeapi</span>
+
+<span class="c1"># The customer data can be sourced from any system
+</span><span class="n">customer_data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'first_name'</span><span class="p">:</span> <span class="s">'Bob'</span><span class="p">,</span> <span class="s">'favourite_drink'</span><span class="p">:</span> <span class="s">'latte'</span><span class="p">}</span>
+
+<span class="c1"># Replace with your API key
+</span><span class="n">r</span> <span class="o">=</span> <span class="n">reframeapi</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">'&lt;your-api-key&gt;'</span><span class="p">)</span>
+
+<span class="c1"># This assumes that your VisionScript template is saved in my-template.rvs
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'./my-template.rvs'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">return_code</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">personalize</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">variables</span><span class="o">=</span><span class="n">customer_data</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">return_code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+  <span class="c1"># Success
+</span>  <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Personalized video can be downloaded from: </span><span class="si">{</span><span class="n">output</span><span class="p">.</span><span class="n">url</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Error calling Reframe Personalization Engine: </span><span class="si">{</span><span class="n">return_code</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div>
+<p>The API endpoint for Reframe Personalization Engine is:
+<code>
+https://rpe.endpoint.reframeapi.com/latest
+</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Format</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>script</code></td>
+<td>VisionScript template</td>
+<td><a href="#reframe-visionscript">VisionScript</a></td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>variables</code> or <em>Query Parameters</em></td>
+<td>A key-value map of variables to pass to VisionScript</td>
+<td>Key=Value</td>
+<td>Optional</td>
+</tr>
+</tbody></table>
+<h2 id='pricing'>Pricing</h2>
+<table><thead>
+<tr>
+<th>Item</th>
+<th>Price</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>API Request</td>
+<td>$0.015 per request</td>
+</tr>
+<tr>
+<td>Call to Reframe Core API</td>
+<td>As per individual API pricing</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  For any calls to Reframe Core APIs within a CourseDynamics invocation, the pricing of the individual API applies. For example, a Personalization Engine rendering involving a 3 minute slideshow and a 12 second Webcast is priced as follows: <br /><br />
+  $0.015 (cost of CourseDynamics) + $0.735 (cost of Slideshow) + $0.159 (cost of Webcast) = Total cost $0.909
+</aside>
 <h1 id='reframe-coursedynamics'>Reframe CourseDynamics</h1>
-<p><Placeholder for API specification></p>
+<p>This platform provides educators, coaches, and course authors with an intuitive, dynamic toolset to design online courses that are not only personalized to each student but also easy to update.</p>
+<h2 id='api-parameters-2'>API Parameters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s1">'X-API-Key: &lt;your-api-key&gt;'</span> <span class="se">\</span>
+  <span class="nt">--json</span> @my-template.rvs <span class="se">\</span>
+  <span class="s1">'https://rcd.endpoint.reframeapi.com/latest?first_name=Bob'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">reframeapi</span>
+
+<span class="c1"># The student data can be sourced from any system
+</span><span class="n">student_data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'first_name'</span><span class="p">:</span> <span class="s">'Bob'</span><span class="p">}</span>
+
+<span class="c1"># Replace with your API key
+</span><span class="n">r</span> <span class="o">=</span> <span class="n">reframeapi</span><span class="p">.</span><span class="n">client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s">'&lt;your-api-key&gt;'</span><span class="p">)</span>
+
+<span class="c1"># This assumes that your VisionScript template is saved in my-course.rvs
+</span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'./my-course.rvs'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">return_code</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">coursedynamics</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">variables</span><span class="o">=</span><span class="n">student_data</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">return_code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+  <span class="c1"># Success
+</span>  <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Personalized course video can be downloaded from: </span><span class="si">{</span><span class="n">output</span><span class="p">.</span><span class="n">url</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Error calling Reframe Personalization Engine: </span><span class="si">{</span><span class="n">return_code</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div>
+<p>The API endpoint for Reframe CourseDynamics is:
+<code>
+https://rcd.endpoint.reframeapi.com/latest
+</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Format</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>script</code></td>
+<td>VisionScript template</td>
+<td><a href="#reframe-visionscript">VisionScript</a></td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>variables</code> or <em>Query Parameters</em></td>
+<td>A key-value map of variables to pass to VisionScript</td>
+<td>Key=Value</td>
+<td>Optional</td>
+</tr>
+</tbody></table>
+<h2 id='pricing-2'>Pricing</h2>
+<table><thead>
+<tr>
+<th>Item</th>
+<th>Price</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>API Request</td>
+<td>$0.015 per request</td>
+</tr>
+<tr>
+<td>Call to Reframe Core API</td>
+<td>As per individual API pricing</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  For any calls to Reframe Core APIs within a CourseDynamics invocation, the pricing of the individual API applies. For example, a CourseDynamics rendering involving a 3 minute slideshow and a 12 second Webcast is priced as follows: <br /><br />
+  $0.015 (cost of CourseDynamics) + $0.735 (cost of Slideshow) + $0.159 (cost of Webcast) = Total cost $0.909
+</aside>
 <h1 id='reframe-visionscript'>Reframe VisionScript</h1>
 <p>Introducing Reframe VisionScript, a groundbreaking scripting language that paves the way for dynamic, highly personalized video experiences.</p>
 
 <p>Designed for developers and accessible to non-technical users alike, VisionScript incorporates the robust features of modern scripting languages while ensuring simplicity in usage. It&#39;s an empowering tool that enables you to harness the complete suite of Reframe&#39;s API capabilities, seamlessly blending power and ease of use.</p>
 
 <p>With VisionScript, transforming your visions into reality has never been more attainable, regardless of your technical proficiency. Dive into the world of VisionScript and redefine your video creation journey.</p>
-<h2 id='reference'>Reference</h2><h1 id='reframe-core-apis'>Reframe Core APIs</h1><h2 id='reframe-webcast'>Reframe Webcast</h2>
+<h2 id='reference'>Reference</h2>
+<p>The basic VisionScript syntax is YAML-compatible.</p>
+<h2 id='modules'>Modules</h2><h3 id='slideshow'>Slideshow</h3><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">slideshow</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">body</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">## Slide One</span>
+      <span class="s">- Bullet One</span>
+      <span class="s">- Bullet Two</span>
+    <span class="na">voiceover</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">This is slide one.</span>
+
+  <span class="pi">-</span> <span class="na">body</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">## Slide Two</span>
+      <span class="s">- Bullet Three</span>
+      <span class="s">- Bullet Four</span>
+    <span class="na">voiceover</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">This is slide two.</span>
+</code></pre></div>
+<p>This module calls the <a href="#reframe-slideshow">Slideshow API</a> to generate a slideshow, with optional voiceover speech via <a href="#reframe-voice-synthetics">Voice Synthetics</a>.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Format</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>body</code></td>
+<td>Body of the slide in Markdown format</td>
+<td>Markdown</td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>voiceover</code></td>
+<td>Voiceover text to be generated via <a href="#reframe-voice-synthetics">Voice Synthetics</a></td>
+<td>Text</td>
+<td>Optional</td>
+</tr>
+</tbody></table>
+<h3 id='ai-avatar'>AI Avatar</h3><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">aiavatar</span><span class="pi">:</span> <span class="s">Hi there. Welcome to my training course.</span>
+</code></pre></div>
+<p>This module calls the <a href="#reframe-ai-avatar">AI Avatar API</a> to generate a talking avatar.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Format</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>aiavatar</code></td>
+<td>Text spoken by the AI Avatar.</td>
+<td>Text</td>
+<td>Required</td>
+</tr>
+</tbody></table>
+<h3 id='webcast'>Webcast</h3><div class="highlight"><pre class="highlight yaml tab-yaml"><code><span class="na">webcast</span><span class="pi">:</span>
+  <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">goto</span><span class="pi">:</span> <span class="s">https://www.reframeapi.com</span>
+      <span class="na">voiceover</span><span class="pi">:</span> <span class="s">First, navigate to the Reframe website at www.reframeapi.com</span>
+
+    <span class="pi">-</span> <span class="na">click</span><span class="pi">:</span>
+        <span class="na">locator</span><span class="pi">:</span>
+          <span class="na">label</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Get</span><span class="nv"> </span><span class="s">Started'</span>
+      <span class="na">voiceover</span><span class="pi">:</span> <span class="s">Then click on the Get Started button</span>
+
+</code></pre></div>
+<p>This module calls the <a href="#reframe-webcast">Webcast API</a> to generate a recording of a web browser session.</p>
+
+<p><strong>Step reference</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Format</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>goto</code></td>
+<td>Go to URL</td>
+<td>Text</td>
+<td><code>goto: https://www.google.com</code></td>
+</tr>
+<tr>
+<td><code>click</code></td>
+<td>Click on element</td>
+<td>Locator</td>
+<td><code>click: &#39;#button&#39;</code></td>
+</tr>
+<tr>
+<td><code>fill</code></td>
+<td>Fill a field</td>
+<td>Locator, Value</td>
+<td><code>fill: &#39;#username&#39;</code></td>
+</tr>
+<tr>
+<td><code>scroll_to</code></td>
+<td>Scroll to an element</td>
+<td>Locator</td>
+<td><code>scroll_to: &#39;#footer&#39;</code></td>
+</tr>
+</tbody></table>
+<h1 id='reframe-core-apis'>Reframe Core APIs</h1><h2 id='reframe-webcast'>Reframe Webcast</h2>
 <p>Reframe Webcast API allows developers to generate recordings of web browser sessions. </p>
 
 <p><Placeholder for API specification></p>
+<h3 id='pricing-3'>Pricing</h3>
+<table><thead>
+<tr>
+<th>Item</th>
+<th>Price</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Rendered Video</td>
+<td>$0.012 per second</td>
+</tr>
+<tr>
+<td>API Request</td>
+<td>$0.015 per request</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  For example, to generate a Webcast recording of 12 seconds, the cost is calculated as follows: $0.015 (price of request) + $0.144 (price of 12 seconds of rendered video) = Total cost $0.159
+</aside>
 <h2 id='reframe-slideshow'>Reframe Slideshow</h2>
 <p>Reframe Slideshow API allows developers to generate dynamic slideshow videos from content written in Markdown. </p>
 
 <p><Placeholder for API specification></p>
-<h2 id='reframe-ai-likeness'>Reframe AI Likeness</h2>
-<p>Reframe AI Likeness API allows developers to generate talking head animations from any written text.</p>
+<h3 id='pricing-4'>Pricing</h3>
+<table><thead>
+<tr>
+<th>Item</th>
+<th>Price</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Rendered Video</td>
+<td>$0.004 per second</td>
+</tr>
+<tr>
+<td>API Request</td>
+<td>$0.015 per request</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  For example, to generate a Slideshow recording of 3 minutes, the cost is calculated as follows: $0.015 (price of request) + $0.72 (price of 180 seconds of rendered video) = Total cost $0.735
+</aside>
+<h2 id='reframe-ai-avatar'>Reframe AI Avatar</h2>
+<p>Reframe AI Avatar API allows developers to generate virtual avatar animations from any written text.</p>
 
 <p><Placeholder for API specification></p>
+<h3 id='pricing-5'>Pricing</h3>
+<table><thead>
+<tr>
+<th>Item</th>
+<th>Price</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Rendered Video</td>
+<td>$0.028 per second</td>
+</tr>
+<tr>
+<td>API Request</td>
+<td>$0.015 per request</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  For example, to generate a AI Avatar rendering of 30 seconds, the cost is calculated as follows: $0.015 (price of request) + $0.84 (price of 30 seconds of rendered video) = Total cost $0.855
+</aside>
 <h2 id='reframe-voice-synthetics'>Reframe Voice Synthetics</h2>
 <p>Reframe Voice Synthetics API allows developers to generate text-to-speech audio with high-quality audio effects.</p>
 
@@ -450,9 +773,8 @@
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">shell</a>
           </div>
       </div>
     </div>
