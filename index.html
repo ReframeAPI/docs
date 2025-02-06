@@ -405,6 +405,8 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Reframe API documentation. Reframe provides a suite of core APIs that allow developers to tap into Reframe&#39;s powerful services to create engaging and highly personalized content.</p>
+
+<p>Reframe provides a scalable and interoperable API ecosystem designed to ingest data from various data sources, process it according to requirements and output highly personalized video content.</p>
 <h1 id='authentication'>Authentication</h1>
 <p>All requests to Reframe APIs need to include an API key in the <code>X-API-Key</code> header.</p>
 
@@ -665,7 +667,32 @@ https://rcd.endpoint.reframeapi.com/latest
 <h1 id='reframe-core-apis'>Reframe Core APIs</h1><h2 id='reframe-webcast'>Reframe Webcast</h2>
 <p>Reframe Webcast API allows developers to generate recordings of web browser sessions. </p>
 
-<p><Placeholder for API specification></p>
+<p>The API endpoint for Reframe Webcast is:
+<code>
+https://webcast.endpoint.reframeapi.com/latest
+</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Format</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>script</code></td>
+<td>VisionScript compatible Webcast template</td>
+<td><a href="#Webcast">Webcast</a></td>
+<td>Required</td>
+</tr>
+<tr>
+<td><code>variables</code> or <em>Query Parameters</em></td>
+<td>A key-value map of variables to pass to VisionScript</td>
+<td>Key=Value</td>
+<td>Optional</td>
+</tr>
+</tbody></table>
 <h3 id='pricing-3'>Pricing</h3>
 <table><thead>
 <tr>
@@ -740,8 +767,16 @@ https://rcd.endpoint.reframeapi.com/latest
 <p><Placeholder for API specification></p>
 <h2 id='reframe-elements'>Reframe Elements</h2>
 <p>Reframe Elements API allows developers to store, personalize and consume source material that is either user or AI generated.</p>
-<h2 id='reframe-livestream'>Reframe LiveStream</h2><h2 id='reframe-captivate'>Reframe Captivate</h2><h2 id='reframe-audioboard'>Reframe AudioBoard</h2><h2 id='reframe-dataflow'>Reframe DataFlow</h2><h2 id='reframe-translate'>Reframe Translate</h2><h1 id='rate-limiting'>Rate Limiting</h1>
-<p><Placeholder for information about rate limiting></p>
+<h2 id='reframe-livestream'>Reframe LiveStream</h2>
+<p>Reframe LiveStream allows developers to create a live video feed by creating a new LiveStream object and providing a stream of VisionScript to create content.</p>
+<h2 id='reframe-captivate'>Reframe Captivate</h2><h2 id='reframe-audioboard'>Reframe AudioBoard</h2>
+<p>Reframe AudioBoard is a rich audio processing engine designed to apply tools and effects into audio streams.</p>
+<h2 id='reframe-dataflow'>Reframe DataFlow</h2>
+<p>Reframe DataFlow is an integration component which is used to build automatic data ingestion processes for rich customer data from various sources.</p>
+<h2 id='reframe-translate'>Reframe Translate</h2>
+<p>Reframe Translate provides near-realtime translation capabilities for VisionScript in 57 languages.</p>
+<h1 id='rate-limiting'>Rate Limiting</h1>
+<p>Rate limits are set by API key. By default, all API keys are limited to 5 requests per second. Please reach out to support@reframeapi.com to increase your rate limits.</p>
 <h1 id='errors'>Errors</h1>
 <p>The Reframe API uses the following error codes:</p>
 
